@@ -1,29 +1,37 @@
 # Citypluse-Thammiksha
 
-This repository documents basic command-line tasks using Windows PowerShell. It includes commands for removing directories, deleting files and folders recursively, renaming files, checking disk usage, managing file permissions, and listing running processes.
+## Introduction
+
+This repository contains practical command-line exercises completed using **Windows PowerShell**. The exercises cover directory management, file deletion, file renaming, disk usage, file permissions, and process management.
 
 ## Task 1: Remove Directories
 
-Use `mkdir` to create a directory and `rmdir` to remove an empty directory.
+### Objective
+Create a directory and then remove it.
 
-**Commands:**
+### Commands Used
 
 powershell
 mkdir temp-dir
 rmdir temp-dir
 
 
-**Explanation:**
-- `mkdir` – Creates a new directory.
-- `rmdir` – Removes an empty directory.
+### Explanation
+- `mkdir temp-dir` creates a directory named `temp-dir`.
+- `rmdir temp-dir` removes the empty directory.
 
-![Removing an empty directory](homework/task1.png)
+### Screenshot
+
+![Task 1 - Remove Directories](task1.png)
+
+---
 
 ## Task 2: Remove Files and Folders Recursively
 
-Use `mkdir` to create a directory, `New-Item` to create a file, and `Remove-Item -Recurse` to remove a directory containing files.
+### Objective
+Create a folder containing a file and remove the folder along with its contents.
 
-**Commands:**
+### Commands Used
 
 powershell
 mkdir test
@@ -31,20 +39,23 @@ New-Item test/data.txt -ItemType File
 Remove-Item test -Recurse
 
 
-**Explanation:**
-- `mkdir` – Creates a directory.
-- `New-Item` – Creates a new file.
-- `Remove-Item -Recurse` – Removes a directory and all its contents recursively.
+### Explanation
+- `mkdir test` creates a directory named `test`.
+- `New-Item test/data.txt -ItemType File` creates a file named `data.txt` inside the directory.
+- `Remove-Item test -Recurse` deletes the directory and everything inside it.
 
-![Removing files and folders recursively](homework/task2.png)
+### Screenshot
+
+![Task 2 - Remove Files and Folders Recursively](task2.png)
+
+---
 
 ## Task 3: Rename Files and Check Disk Usage
 
-### Rename a File
+### Objective
+Create and rename a file, list directory contents, and check disk usage.
 
-Use `New-Item` to create a file and `Rename-Item` to rename it.
-
-**Commands:**
+### Commands Used
 
 powershell
 New-Item old.txt -ItemType File
@@ -52,16 +63,7 @@ Rename-Item old.txt new.txt
 dir
 
 
-**Explanation:**
-- `New-Item` – Creates a new file.
-- `Rename-Item` – Renames a file.
-- `dir` – Displays files and directories.
-
-### Check Disk Usage
-
-Use `Get-PSDrive` to check used and free disk space.
-
-**Commands:**
+To check available disk space:
 
 powershell
 Get-PSDrive C
@@ -70,42 +72,86 @@ Get-PSDrive C
 To calculate the total size of files in the current directory and its subdirectories:
 
 powershell
-Get-ChildItem . -Recurse | Measure-Object -Property Length -Sum
+Get-ChildItem . -Recurse -File | Measure-Object -Property Length -Sum
 
 
-**Explanation:**
-- `Get-PSDrive C` – Displays used and free space on the C drive.
-- `Get-ChildItem -Recurse` – Lists files and folders recursively.
-- `Measure-Object` – Calculates the total file size.
+### Explanation
+- `New-Item` creates a new file named `old.txt`.
+- `Rename-Item` renames `old.txt` to `new.txt`.
+- `dir` displays the files and folders in the current directory.
+- `Get-PSDrive C` displays disk information for the C drive.
+- `Get-ChildItem` lists files recursively, and `Measure-Object` calculates their total size in bytes.
 
-![Renaming files and checking disk usage](homework/task3.png)
+### Screenshot
+
+![Task 3 - Rename Files and Check Disk Usage](task3.png)
+
+---
 
 ## Task 4: File Permissions
 
-File permissions control who can access and modify files.
+### Objective
+Change and check file permissions.
 
-Use `icacls` to grant and check file permissions in Windows PowerShell.
-
-### Create a File
+### Commands Used
 
 powershell
 New-Item sample.txt -ItemType File
-
-
-### Grant Permissions
-
-powershell
 icacls sample.txt /grant Everyone:F
-
-
-### Check File Permissions
-
-powershell
 icacls sample.txt
 
 
-**Explanation:**
-- `New-Item` – Creates a new file.
-- `icacls` – Displays or modifies file permissions.
-- `/grant` – Grants permissions to a specified user or group.
-- `Everyone:F` – Grants
+### Explanation
+- `New-Item sample.txt -ItemType File` creates an empty file named `sample.txt`.
+- `icacls sample.txt /grant Everyone:F` grants the Everyone group full control over the file.
+- `icacls sample.txt` displays the file's permission information.
+
+**Note:** `icacls` is a Windows command used to manage file access permissions.
+
+### Screenshot
+
+![Task 4 - File Permissions](task4.png)
+
+---
+
+## Task 5: List All Running Processes
+
+### Objective
+Display the processes currently running on the system.
+
+### Commands Used
+
+powershell
+Get-Process
+
+
+powershell
+tasklist
+
+
+### Explanation
+- `Get-Process` displays currently running processes using PowerShell.
+- `tasklist` displays a list of running processes in Windows.
+
+### Screenshot
+
+![Task 5 - List All Running Processes](task5.png)
+
+---
+
+## Conclusion
+
+Through these five tasks, I practised basic command-line operations using Windows PowerShell. I learned how to:
+
+1. Create and remove directories.
+2. Delete files and folders recursively.
+3. Rename files and check disk usage.
+4. Manage and view file permissions.
+5. List currently running processes.
+
+These exercises helped me understand basic file management, system administration, and process management commands.
+
+---
+
+**Repository:** Citypluse-Thammiksha  
+**Platform:** Windows PowerShell
